@@ -1,0 +1,24 @@
+plugins {
+	id 'java'
+}
+
+group = 'com'
+version = '0.0.1-SNAPSHOT'
+
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compileOnly project.ext.lombok
+	annotationProcessor project.ext.lombok
+
+	implementation project.ext.springbootweb
+	implementation project.ext.swagger
+	runtimeOnly project.ext.db
+	implementation project.ext.springbootStarterDataJpa
+
+	implementation project(':dominio')
+	implementation project(':aplicacion')
+}

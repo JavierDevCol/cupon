@@ -1,0 +1,16 @@
+rootProject.name = 'cupon'
+
+include 'infraestructura'
+include 'aplicacion'
+include 'dominio'
+include 'comun'
+
+include 'comun:comun-dominio'
+findProject(':comun:comun-dominio')?.name = 'comun-dominio'
+
+include 'comun:comun-aplicacion'
+findProject(':comun:comun-aplicacion')?.name = 'comun-aplicacion'
+
+include 'comun:comun-infraestructura'
+findProject(':comun:comun-infraestructura')?.name = 'comun-infraestructura'
+
