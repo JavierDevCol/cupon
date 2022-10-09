@@ -16,10 +16,15 @@ public class Item {
     public Item(String id, String title, Double price, String site_id) {
 
         ValidadorArgumento.validarPositivo(price, PRECIO_MAYOR_CERO);
+        priceDosDecimales(price);
 
         this.id = id;
         this.title = title;
-        this.price = price;
         this.site_id = site_id;
     }
+
+    private void priceDosDecimales(Double price) {
+        this.price = (double) Math.round(price * 100d) / 100d;
+    }
+
 }
