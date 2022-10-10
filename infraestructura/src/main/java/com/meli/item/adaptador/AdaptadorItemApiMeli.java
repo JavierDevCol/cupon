@@ -3,10 +3,12 @@ package com.meli.item.adaptador;
 import com.meli.item.modelo.entidades.Item;
 import com.meli.item.puerto.meli.ItemApiMeli;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
+@Repository
 public class AdaptadorItemApiMeli implements ItemApiMeli {
 
     private static final String URL = "https://api.mercadolibre.com/";
@@ -32,4 +34,5 @@ public class AdaptadorItemApiMeli implements ItemApiMeli {
     public List<Item> buscarItems(List<String> id) {
         return null;
     }
+
 }

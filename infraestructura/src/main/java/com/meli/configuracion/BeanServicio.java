@@ -1,6 +1,6 @@
 package com.meli.configuracion;
 
-import com.meli.comando.manejador.ManejadorAgregarItem;
+import com.meli.comando.manejador.ManejadorCanjearCupon;
 import com.meli.item.controlador.ComandoControladorItem;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,8 +23,8 @@ public class BeanServicio {
     }
 
     @Bean
-    public ComandoControladorItem comandoControladorItem(ManejadorAgregarItem manejadorAgregarItem) {
-        return new ComandoControladorItem(manejadorAgregarItem);
+    public ComandoControladorItem comandoControladorItem(ManejadorCanjearCupon manejadorCanjearCupon) {
+        return new ComandoControladorItem(manejadorCanjearCupon);
     }
 
 

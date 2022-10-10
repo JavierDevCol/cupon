@@ -1,38 +1,45 @@
-package com.meli.item.modelo.dto;
+package com.meli.item.modelo.entidades;
 
 import com.ValidadorArgumento;
 import com.meli.item.modelo.entidades.Item;
-import lombok.Getter;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-public class ListaItemsCuponDto {
 
-    private static final String PRECIO_MAYOR_CERO = "El precio debe ser mayor a CERO (0)";
-    private static final String LISTA_VACIA = "Tiene que comprar al menos un item cone l cupon";
+public class ListaItemsCompradosCupon {
+
+    private static final String PRECIO_MAYOR_CERO = "El precio debe ser mayor a CERO (0).";
+    private static final String LISTA_VACIA = "Lista de item favoritos vacia.";
 
     private List<Item> listaItemsComprados;
     private Double precioListaItems;
+    private Double cupon;
 
-    public ListaItemsCuponDto(List<Item> listaItems, Double precioListaItems) {
+    public ListaItemsCompradosCupon(Double cupon) {
 
-        ValidadorArgumento.validarNoVacio(listaItems, LISTA_VACIA);
-        ValidadorArgumento.validarPositivo(precioListaItems, PRECIO_MAYOR_CERO);
+        ValidadorArgumento.validarPositivo(cupon, PRECIO_MAYOR_CERO);
 
-        this.listaItemsComprados = listaItems;
-        this.precioListaItems = precioListaItems;
+        this.listaItemsComprados = new ArrayList<>();
+        this.precioListaItems = 0d;
+        this.cupon = cupon;
     }
 
-    public void buscarItemAComprar(List<Item> listaItemsFavoritos, Double valorCupon) {
+    public void buscarItemsAComprar(List<Item> listaItemsFavoritos) {
+        ValidadorArgumento.validarNoVacio(listaItemsFavoritos, LISTA_VACIA);
+
+        if (listaItemsFavoritos.size() == 1) {
+            return;
+        }
         ordenar(listaItemsFavoritos);
         this.precioListaItems = listaItemsFavoritos.get(0).getPrice();
+        this.listaItemsComprados.add(listaItemsFavoritos.get(0));
         int i = 1;
         do {
             this.agregarItemComprado(listaItemsFavoritos.get(i));
             i++;
         }while (
-                (valorCupon - this.precioListaItems) >= listaItemsFavoritos.get(i).getPrice()
+                (this.cupon - this.precioListaItems) >= listaItemsFavoritos.get(i).getPrice()
         );
     }
 

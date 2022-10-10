@@ -1,6 +1,5 @@
 package com.meli.consulta.manejador;
 
-import com.meli.item.modelo.dto.ItemDto;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
