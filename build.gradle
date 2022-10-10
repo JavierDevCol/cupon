@@ -40,13 +40,17 @@ allprojects {
 			"io.springfox:springfox-swagger2:2.9.2"
 	]
 
-	project.ext.db = ["mysql:mysql-connector-java:8.0.20"]
+//	project.ext.db = ["mysql:mysql-connector-java:8.0.30"]
+
+	project.ext.db = ["org.postgresql:postgresql:42.5.0"]
+
+	project.ext.javax = ["javax.xml.bind:jaxb-api:2.3.1"]
 
 	project.ext.springbootjdbc = ["org.springframework.boot:spring-boot-starter-jdbc:${springBootVersion}"]
 	project.ext.flyway = ["org.flywaydb:flyway-core:5.2.1"]
 	project.ext.flywaytest = ["org.flywaydb.flyway-test-extensions:flyway-spring-test:5.2.1"]
 
-	project.ext.h2 = ["com.h2database:h2:1.4.194"]
+//	project.ext.h2 = ["com.h2database:h2:1.4.194"]
 }
 
 repositories {
@@ -55,13 +59,10 @@ repositories {
 
 dependencies {
 
-	compileOnly project.ext.lombok
-	annotationProcessor project.ext.lombok
-
 	implementation project.ext.springbootweb
 	runtimeOnly project.ext.springdevtools
 
 	implementation project(':infraestructura')
 }
 
-mainClassName='com.meli.MeliAppliction'
+mainClassName='com.meli.MeliApplication'

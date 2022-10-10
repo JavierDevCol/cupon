@@ -11,6 +11,8 @@ repositories {
 
 dependencies {
 	implementation project(':dominio')
+
+	implementation project(':comun:comun-aplicacion')
 	implementation project.ext.springtxt
 	compileOnly project.ext.lombok
 	annotationProcessor project.ext.lombok

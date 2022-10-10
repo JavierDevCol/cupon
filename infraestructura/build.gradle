@@ -18,6 +18,7 @@ dependencies {
 	implementation project.ext.swagger
 	runtimeOnly project.ext.db
 	implementation project.ext.springbootStarterDataJpa
+	implementation project.ext.javax
 
 	implementation project(':dominio')
 	implementation project(':aplicacion')
