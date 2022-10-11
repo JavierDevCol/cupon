@@ -16,6 +16,7 @@ public class ListaItemsCompradosCupon {
     private List<Item> listaItemsComprados;
     private Double precioListaItems;
     private Double cupon;
+    private boolean existo;
 
     public ListaItemsCompradosCupon(Double cupon) {
 
@@ -31,21 +32,31 @@ public class ListaItemsCompradosCupon {
         ordenar(listaItemsFavoritos);
         int i = 0;
         if (listaItemsFavoritos.size() > 1 && listaItemsFavoritos.get(i).getPrice() <= this.cupon) {
-            this.agregarItemComprado(listaItemsFavoritos.get(i));
+            this.listaItemsComprados.add(listaItemsFavoritos.get(i));
+            this.actualizarPrecioLista(listaItemsFavoritos.get(i).getPrice());
             i = 1;
             while ( i < listaItemsFavoritos.size() && (this.cupon - this.precioListaItems) >= listaItemsFavoritos.get(i).getPrice() ) {
                 this.agregarItemComprado(listaItemsFavoritos.get(i));
                 i++;
             }
         }else if(listaItemsFavoritos.get(i).getPrice() <= this.cupon){
-            this.precioListaItems = listaItemsFavoritos.get(i).getPrice();
-            this.listaItemsComprados.add(listaItemsFavoritos.get(i));
+            this.agregarItemComprado(listaItemsFavoritos.get(i));
         }
     }
 
     private void agregarItemComprado(Item item) {
-        this.listaItemsComprados.add(item);
-        this.actualizarPrecioLista(item.getPrice());
+        if (repetido(item)){
+            this.listaItemsComprados.add(item);
+            this.actualizarPrecioLista(item.getPrice());
+        }
+    }
+
+    private boolean repetido(Item item){
+        for (Item it : this.listaItemsComprados) {
+            if (Objects.equals(it.getId(), item.getId()))
+                return false;
+        }
+        return true;
     }
 
     private void actualizarPrecioLista(Double precio) {

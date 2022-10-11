@@ -15,5 +15,6 @@ public class ItemComando {
     private String title;
     private Double price;
     private String site_id;
+    private Long quantity_sold;
 
 }

@@ -15,7 +15,9 @@ public class FabricaItem {
                 itemComando.getId(),
                 itemComando.getTitle(),
                 itemComando.getPrice(),
-                itemComando.getSite_id()
+                itemComando.getSite_id(),
+                itemComando.getQuantity_sold()
+
         );
     }
 
@@ -24,7 +26,8 @@ public class FabricaItem {
                 item.getId(),
                 item.getTitle(),
                 item.getPrice(),
-                item.getSite_id()
+                item.getSite_id(),
+                item.getQuantity_sold()
         );
     }
 

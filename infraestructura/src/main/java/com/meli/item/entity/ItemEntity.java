@@ -19,6 +19,7 @@ public class ItemEntity {
     private String title;
     private Double price;
     private String site_id;
+    private Long quantity_sold;
 
     @Override
     public boolean equals(Object o) {
