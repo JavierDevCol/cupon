@@ -1,11 +1,10 @@
 package com.meli.item.modelo.entidades;
 
 import com.ValidadorArgumento;
-import com.meli.item.modelo.entidades.Item;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Objects;
 
 public class ListaItemsCompradosCupon {
 
@@ -27,20 +26,19 @@ public class ListaItemsCompradosCupon {
 
     public void buscarItemsAComprar(List<Item> listaItemsFavoritos) {
         ValidadorArgumento.validarNoVacio(listaItemsFavoritos, LISTA_VACIA);
-
-        if (listaItemsFavoritos.size() == 1) {
-            return;
-        }
         ordenar(listaItemsFavoritos);
-        this.precioListaItems = listaItemsFavoritos.get(0).getPrice();
-        this.listaItemsComprados.add(listaItemsFavoritos.get(0));
-        int i = 1;
-        do {
+        int i = 0;
+        if (listaItemsFavoritos.size() > 1 && listaItemsFavoritos.get(i).getPrice() <= this.cupon) {
             this.agregarItemComprado(listaItemsFavoritos.get(i));
-            i++;
-        }while (
-                (this.cupon - this.precioListaItems) >= listaItemsFavoritos.get(i).getPrice()
-        );
+            i = 1;
+            while ( (this.cupon - this.precioListaItems) >= listaItemsFavoritos.get(i).getPrice() ) {
+                this.agregarItemComprado(listaItemsFavoritos.get(i));
+                i++;
+            }
+        }else if(listaItemsFavoritos.get(i).getPrice() <= this.cupon){
+            this.precioListaItems = listaItemsFavoritos.get(i).getPrice();
+            this.listaItemsComprados.add(listaItemsFavoritos.get(i));
+        }
     }
 
     private void agregarItemComprado(Item item) {
@@ -54,11 +52,11 @@ public class ListaItemsCompradosCupon {
 
     private static void ordenar(List<Item> items) {
         for (int i = 0; i < items.size(); i++) {
-            for (int j = 0; j < items.size() - 1; j++){
-                if (items.get(j).getPrice() > items.get(j+1).getPrice()) {
+            for (int j = 0; j < items.size() - 1; j++) {
+                if (items.get(j).getPrice() > items.get(j + 1).getPrice()) {
                     Item aux = items.get(j);
-                    items.set(j, items.get(j+1));
-                    items.set(j+1, aux);
+                    items.set(j, items.get(j + 1));
+                    items.set(j + 1, aux);
                 }
             }
         }

@@ -14,7 +14,6 @@ public class Item {
     private String site_id;
 
     public Item(String id, String title, Double price, String site_id) {
-
         ValidadorArgumento.validarPositivo(price, PRECIO_MAYOR_CERO);
         priceDosDecimales(price);
 

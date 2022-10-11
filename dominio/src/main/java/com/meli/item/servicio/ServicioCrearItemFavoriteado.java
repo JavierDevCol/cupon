@@ -21,10 +21,10 @@ public class ServicioCrearItemFavoriteado {
 
     public void ejecutar(List<Item> items) {
         items.forEach(item -> {
-                    boolean existe = Objects.nonNull(
+                    boolean existe = Objects.isNull(
                             repositorioConsultaItem.buscarPorId(item.getId())
                     );
-                    if (!existe) {
+                    if (existe) {
                         repositorioComandoItem.crear(item);
                     }
                 }
