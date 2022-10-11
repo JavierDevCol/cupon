@@ -1,27 +1,33 @@
 package com.meli.item.controlador;
 
+import com.excepcion.ExcepcionSinDatos;
 import com.meli.comando.ItemComando;
+import com.meli.comando.ListaItemsCompradosCuponComando;
 import com.meli.comando.manejador.ManejadorCanjearCupon;
 import com.meli.item.adaptador.AdaptadorItemApiMeli;
 import com.meli.item.modelo.entidades.ListaItemsCompradosCupon;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController(value = "/item")
+@RestController
 @RequestMapping("/item")
-@RequiredArgsConstructor
 public class ComandoControladorItem {
 
-    private final ManejadorCanjearCupon manejadorCanjearCupon;
+    @Autowired
+    private  ManejadorCanjearCupon manejadorCanjearCupon;
 
     @PostMapping("/coupon")
-    public ListaItemsCompradosCupon redimirCupon(List<String> listaItemsFavoritos, Double cupon) {
-
+    @ResponseBody
+    public ListaItemsCompradosCuponComando redimirCupon(@RequestBody List<String> listaItemsFavoritos, Double cupon) {
         return manejadorCanjearCupon.ejecutar( listaItemsFavoritos, cupon);
+    }
+
+    @GetMapping
+    public String hola(){
+        throw new ExcepcionSinDatos("HOLA MUNDO ERROR");
     }
 
 }

@@ -1,5 +1,6 @@
 package com.meli.item.adaptador;
 
+import com.excepcion.ExcepcionObjectoNoEncontrado;
 import com.excepcion.ExcepcionTecnica;
 import com.meli.item.MapperItem;
 import com.meli.item.entity.ItemEntity;
@@ -11,7 +12,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 @RequiredArgsConstructor
@@ -24,17 +24,21 @@ public class AdaptadorItemApiMeli implements ItemApiMeli {
 
 
     private final RestTemplate restTemplate;
+
+
     private final MapperItem mapperItem;
 
     @Override
     public Item buscarItem(String id) {
-        this.validarFormatoSitie(id);
-        ResponseEntity<ItemEntity> entity = restTemplate.getForEntity(
-                URL + BUSCAR_ITEM + id,
-                ItemEntity.class
-        );
-        if (Objects.isNull(entity.getBody())) {
-            throw new ExcepcionTecnica(ITEM_NO_ENCONTRADO.concat(id));
+        id = this.validarFormatoSitie(id);
+        ResponseEntity<ItemEntity> entity;
+        try {
+            entity = restTemplate.getForEntity(
+                    URL + BUSCAR_ITEM + id,
+                    ItemEntity.class
+            );
+        } catch (Exception e) {
+            throw new ExcepcionObjectoNoEncontrado(ITEM_NO_ENCONTRADO.concat(id));
         }
         return mapperItem.intemEntityToItem(entity.getBody());
     }
@@ -50,12 +54,12 @@ public class AdaptadorItemApiMeli implements ItemApiMeli {
         return items;
     }
 
-    private void validarFormatoSitie(String id) {
+    private String validarFormatoSitie(String id) {
         if (id.length() <= 3 && !id.substring(0, 3).matches("[A-Za-z]*")) {
             throw new ExcepcionTecnica(ID_ITEM_INCOMPLETO.concat(id));
         }
         String sitie = id.substring(0, 3);
-        id.replace(sitie, sitie.toUpperCase());
+        return id.replace(sitie, sitie.toUpperCase());
     }
 
 }

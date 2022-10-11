@@ -37,7 +37,7 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
         //en caso de tener otra excepcion matricularla aca
     }
 
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler({Exception.class, RuntimeException.class})
     public final ResponseEntity<Error> handleAllExceptions(Exception exception) {
         ResponseEntity<Error> resultado;
 
@@ -53,10 +53,6 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
             Error error = new Error(excepcionNombre, OCURRIO_UN_ERROR_FAVOR_CONTACTAR_AL_ADMINISTRADOR);
             resultado = new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
         return resultado;
     }
-    
-    
-    
 }

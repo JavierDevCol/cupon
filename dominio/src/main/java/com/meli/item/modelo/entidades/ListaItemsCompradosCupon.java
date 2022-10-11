@@ -1,11 +1,13 @@
 package com.meli.item.modelo.entidades;
 
 import com.ValidadorArgumento;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@Getter
 public class ListaItemsCompradosCupon {
 
     private static final String PRECIO_MAYOR_CERO = "El precio debe ser mayor a CERO (0).";
@@ -31,7 +33,7 @@ public class ListaItemsCompradosCupon {
         if (listaItemsFavoritos.size() > 1 && listaItemsFavoritos.get(i).getPrice() <= this.cupon) {
             this.agregarItemComprado(listaItemsFavoritos.get(i));
             i = 1;
-            while ( (this.cupon - this.precioListaItems) >= listaItemsFavoritos.get(i).getPrice() ) {
+            while ( i < listaItemsFavoritos.size() && (this.cupon - this.precioListaItems) >= listaItemsFavoritos.get(i).getPrice() ) {
                 this.agregarItemComprado(listaItemsFavoritos.get(i));
                 i++;
             }

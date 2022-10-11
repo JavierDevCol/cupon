@@ -1,5 +1,7 @@
 package com.meli.comando.manejador;
 
+import com.meli.comando.ListaItemsCompradosCuponComando;
+import com.meli.comando.fabrica.FabricaListaItemsComprados;
 import com.meli.item.modelo.entidades.Item;
 import com.meli.item.modelo.entidades.ListaItemsCompradosCupon;
 import com.meli.item.puerto.meli.ItemApiMeli;
@@ -17,10 +19,11 @@ public class ManejadorCanjearCupon {
     private final ServicioCanjearCupon servicioCanjearCupon;
     private final ServicioCrearItemFavoriteado servicioCrearItemFavoriteado;
     private final ItemApiMeli itemApiMeli;
+    private final FabricaListaItemsComprados fabricaListaItemsComprados;
 
-    public ListaItemsCompradosCupon ejecutar(List<String> listaItemsFavoritos, Double cupon) {
+    public ListaItemsCompradosCuponComando ejecutar(List<String> listaItemsFavoritos, Double cupon) {
         List<Item> listaFavoritos = itemApiMeli.buscarItems(listaItemsFavoritos);
         servicioCrearItemFavoriteado.ejecutar(listaFavoritos);
-        return servicioCanjearCupon.ejecutar(listaFavoritos, cupon);
+        return fabricaListaItemsComprados.crear(servicioCanjearCupon.ejecutar(listaFavoritos, cupon));
     }
 }

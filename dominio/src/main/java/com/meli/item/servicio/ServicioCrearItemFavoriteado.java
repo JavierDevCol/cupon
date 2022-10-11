@@ -1,5 +1,6 @@
 package com.meli.item.servicio;
 
+import com.excepcion.ExcepcionObjectoNoEncontrado;
 import com.meli.item.modelo.entidades.Item;
 import com.meli.item.puerto.repositorio.RepositorioComandoItem;
 import com.meli.item.puerto.repositorio.RepositorioConsultaItem;
@@ -20,6 +21,7 @@ public class ServicioCrearItemFavoriteado {
     }
 
     public void ejecutar(List<Item> items) {
+
         items.forEach(item -> {
                     boolean existe = Objects.isNull(
                             repositorioConsultaItem.buscarPorId(item.getId())
@@ -29,5 +31,6 @@ public class ServicioCrearItemFavoriteado {
                     }
                 }
         );
+
     }
 }

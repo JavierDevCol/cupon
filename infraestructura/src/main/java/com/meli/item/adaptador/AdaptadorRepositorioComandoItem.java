@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 @RequiredArgsConstructor
-@Repository
 public class AdaptadorRepositorioComandoItem implements RepositorioComandoItem {
 
     private final ItemDao itemDao;
@@ -19,7 +18,7 @@ public class AdaptadorRepositorioComandoItem implements RepositorioComandoItem {
     public Item crear(Item item) {
         ItemEntity itemEntity = mapperItem.itemToItemEntity(item);
         itemDao.save(itemEntity);
-        return item;
+        return null;
     }
 
     @Override

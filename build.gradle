@@ -36,8 +36,7 @@ allprojects {
 	]
 
 	project.ext.swagger = [
-			"io.springfox:springfox-swagger-ui:2.9.2",
-			"io.springfox:springfox-swagger2:2.9.2"
+			'org.springdoc:springdoc-openapi-ui:1.6.11'
 	]
 
 //	project.ext.db = ["mysql:mysql-connector-java:8.0.30"]

@@ -20,7 +20,12 @@ dependencies {
 	implementation project.ext.springbootStarterDataJpa
 	implementation project.ext.javax
 
+	implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+	annotationProcessor  'org.mapstruct:mapstruct-processor:1.5.3.Final'
+
 	implementation project(':comun:comun-infraestructura')
+	implementation project(':comun:comun-dominio')
+
 	implementation project(':dominio')
 	implementation project(':aplicacion')
 }
