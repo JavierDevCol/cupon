@@ -1,7 +1,7 @@
 package com.meli.comando.manejador;
 
 import com.meli.comando.ListaItemsCompradosCuponComando;
-import com.meli.comando.fabrica.FabricaListaItemsComprados;
+import com.meli.fabrica.FabricaListaItemsComprados;
 import com.meli.item.modelo.entidades.Item;
 import com.meli.item.puerto.meli.ItemApiMeli;
 import com.meli.item.servicio.ServicioCanjearCupon;

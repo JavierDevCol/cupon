@@ -2,14 +2,21 @@ package com.meli.item.controlador;
 
 
 import com.meli.consulta.manejador.ManejadorListaItemsTopFavoritos;
+import com.meli.item.dto.ListaItemsTopFavoritosDto;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController(value = "value")
+@RestController
 public class ConsultaControladorItem {
 
-    private final ManejadorListaItemsTopFavoritos manejadorListaItemsTopFavoritos;
+    @Autowired
+    private  ManejadorListaItemsTopFavoritos manejadorListaItemsTopFavoritos;
 
-    public ConsultaControladorItem(ManejadorListaItemsTopFavoritos manejadorListaItemsTopFavoritos) {
-        this.manejadorListaItemsTopFavoritos = manejadorListaItemsTopFavoritos;
-    }
+   @GetMapping("/cupon/stats")
+    public ListaItemsTopFavoritosDto listarTop(){
+       return new ListaItemsTopFavoritosDto(manejadorListaItemsTopFavoritos.ejecutar());
+   }
+
+
 }

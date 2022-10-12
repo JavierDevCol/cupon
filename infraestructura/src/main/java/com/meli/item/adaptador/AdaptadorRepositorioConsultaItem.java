@@ -6,13 +6,15 @@ import com.meli.item.entity.ItemEntity;
 import com.meli.item.modelo.entidades.Item;
 import com.meli.item.puerto.repositorio.RepositorioConsultaItem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Objects;
 
 @Repository
 public class AdaptadorRepositorioConsultaItem implements RepositorioConsultaItem {
+
+    private static final Integer CANTIDAD_TOP = 5;
 
     @Autowired
     private ItemDao itemDao;
@@ -20,8 +22,10 @@ public class AdaptadorRepositorioConsultaItem implements RepositorioConsultaItem
     private MapperItem mapperItem;
 
     @Override
-    public List<Item> listar() {
-        return null;
+    public List<Item> listarTopFavoritos() {
+        List<ItemEntity> top = itemDao.findAll(Sort.by(Sort.Direction.DESC, "quantitySold"));
+        topCinco(top);
+        return mapperItem.intemEntityToItem(top);
     }
 
     @Override
@@ -38,5 +42,11 @@ public class AdaptadorRepositorioConsultaItem implements RepositorioConsultaItem
     @Override
     public boolean existePorTitle(String title) {
         return false;
+    }
+
+    private void topCinco(List<ItemEntity> itemEntities) {
+        for (int i = itemEntities.size(); i > CANTIDAD_TOP ; i--) {
+            itemEntities.remove(i - 1);
+        }
     }
 }

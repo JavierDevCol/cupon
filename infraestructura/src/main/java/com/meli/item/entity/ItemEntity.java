@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.Hibernate;
 import org.springframework.validation.ObjectError;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Objects;
@@ -20,7 +21,8 @@ public class ItemEntity {
     private String title;
     private Double price;
     private String site_id;
-    private Long quantity_sold;
+    @Column(name = "quantity")
+    private Long quantitySold;
 
     @Override
     public boolean equals(Object o) {
@@ -36,7 +38,7 @@ public class ItemEntity {
     }
 
     public void aumentarQuantitySold(){
-        if (Objects.isNull(this.quantity_sold))
-            this.quantity_sold = 0l;
+        if (Objects.isNull(this.quantitySold))
+            this.quantitySold = 0l;
     }
 }

@@ -1,12 +1,12 @@
 package com.meli.configuracion;
 
-import com.meli.comando.fabrica.FabricaListaItemsComprados;
+import com.meli.fabrica.FabricaItem;
+import com.meli.fabrica.FabricaListaItemsComprados;
 import com.meli.comando.manejador.ManejadorCanjearCupon;
 import com.meli.consulta.manejador.ManejadorListaItemsTopFavoritos;
 import com.meli.item.MapperItem;
 import com.meli.item.adaptador.AdaptadorItemApiMeli;
 import com.meli.item.adaptador.AdaptadorRepositorioComandoItem;
-import com.meli.item.controlador.ConsultaControladorItem;
 import com.meli.item.dao.ItemDao;
 import com.meli.item.puerto.meli.ItemApiMeli;
 import com.meli.item.puerto.repositorio.RepositorioComandoItem;
@@ -22,50 +22,34 @@ import java.time.Clock;
 @Configuration
 public class BeanServicio {
 
-    //Usuario
-//    @Bean
-//    public ServicioCrearUsuario servicioCrearUsuario(RepositorioUsuario repositorioUsuario) {
-//        return new ServicioCrearUsuario(repositorioUsuario);
-//    }
-
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
 
-//    @Bean
-//    public ComandoControladorItem comandoControladorItem(ManejadorCanjearCupon manejadorCanjearCupon) {
-//        return new ComandoControladorItem(manejadorCanjearCupon);
-//    }
-
     @Bean
-    public ServicioCanjearCupon servicioCanjearCupon(RepositorioComandoItem repositorioComandoItem){
+    public ServicioCanjearCupon servicioCanjearCupon(RepositorioComandoItem repositorioComandoItem) {
         return new ServicioCanjearCupon(repositorioComandoItem);
     }
 
     @Bean
-    public ServicioCrearItemFavoriteado servicioCrearItemFavoriteado(RepositorioComandoItem repositorioComandoItem, RepositorioConsultaItem repositorioConsultaItem){
+    public ServicioCrearItemFavoriteado servicioCrearItemFavoriteado(RepositorioComandoItem repositorioComandoItem, RepositorioConsultaItem repositorioConsultaItem) {
         return new ServicioCrearItemFavoriteado(repositorioComandoItem, repositorioConsultaItem);
     }
 
     @Bean
-    public ManejadorCanjearCupon manejadorCanjearCupon(ServicioCanjearCupon servicioCanjearCupon, ServicioCrearItemFavoriteado servicioCrearItemFavoriteado, ItemApiMeli itemApiMeli, FabricaListaItemsComprados fabricaListaItemsComprados){
+    public ManejadorCanjearCupon manejadorCanjearCupon(ServicioCanjearCupon servicioCanjearCupon, ServicioCrearItemFavoriteado servicioCrearItemFavoriteado, ItemApiMeli itemApiMeli, FabricaListaItemsComprados fabricaListaItemsComprados) {
         return new ManejadorCanjearCupon(servicioCanjearCupon, servicioCrearItemFavoriteado, itemApiMeli, fabricaListaItemsComprados);
     }
 
     @Bean
-    public ManejadorListaItemsTopFavoritos manejadorListaItemsTopFavoritos(){
-        return new ManejadorListaItemsTopFavoritos();
+    public ManejadorListaItemsTopFavoritos manejadorListaItemsTopFavoritos(RepositorioConsultaItem repositorioConsultaItem, FabricaItem fabricaItem) {
+        return new ManejadorListaItemsTopFavoritos(repositorioConsultaItem, fabricaItem);
     }
 
     @Bean
-    public AdaptadorItemApiMeli adaptadorItemApiMeli (RestTemplate restTemplate, MapperItem mapperItem) {
+    public AdaptadorItemApiMeli adaptadorItemApiMeli(RestTemplate restTemplate, MapperItem mapperItem) {
         return new AdaptadorItemApiMeli(restTemplate, mapperItem);
-    }
-
-    @Bean
-    public ConsultaControladorItem consultaControladorItem(ManejadorListaItemsTopFavoritos manejadorListaItemsTopFavoritos){
-        return new ConsultaControladorItem(manejadorListaItemsTopFavoritos);
     }
 
     @Bean
@@ -74,7 +58,7 @@ public class BeanServicio {
     }
 
     @Bean
-    public AdaptadorRepositorioComandoItem repositorioComandoItem(ItemDao itemDao, MapperItem mapperItem){
+    public AdaptadorRepositorioComandoItem repositorioComandoItem(ItemDao itemDao, MapperItem mapperItem) {
         return new AdaptadorRepositorioComandoItem(itemDao, mapperItem);
 
     }

@@ -26,8 +26,8 @@ public class AdaptadorRepositorioComandoItem implements RepositorioComandoItem {
     public void actualizar(Item item) {
         ItemEntity entity = itemDao.findById(item.getId()).orElse(null);
         if (Objects.nonNull(entity)) {
-            entity.setQuantity_sold(
-                    entity.getQuantity_sold() + 1
+            entity.setQuantitySold(
+                    entity.getQuantitySold() + 1
             );
             itemDao.save(entity);
         }

@@ -1,4 +1,4 @@
-package com.meli.comando.fabrica;
+package com.meli.fabrica;
 
 import com.meli.comando.ItemComando;
 import com.meli.item.modelo.entidades.Item;
@@ -27,7 +27,7 @@ public class FabricaItem {
                 item.getTitle(),
                 item.getPrice(),
                 item.getSite_id(),
-                item.getQuantity_sold()
+                item.getQuantitySold()
         );
     }
 

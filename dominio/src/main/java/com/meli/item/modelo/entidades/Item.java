@@ -13,16 +13,16 @@ public class Item {
     private Double price;
     private String site_id;
 
-    private Long quantity_sold;
+    private Long quantitySold;
 
-    public Item(String id, String title, Double price, String site_id, Long quantity_sold) {
+    public Item(String id, String title, Double price, String site_id, Long quantitySold) {
         ValidadorArgumento.validarPositivo(price, PRECIO_MAYOR_CERO);
         priceDosDecimales(price);
 
         this.id = id;
         this.title = title;
         this.site_id = site_id;
-        this.quantity_sold = quantity_sold;
+        this.quantitySold = quantitySold;
     }
 
     private void priceDosDecimales(Double price) {

@@ -1,15 +1,21 @@
 package com.meli.consulta.manejador;
 
 import com.meli.comando.ItemComando;
-import org.springframework.stereotype.Component;
+import com.meli.fabrica.FabricaItem;
+import com.meli.item.puerto.repositorio.RepositorioConsultaItem;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 public class ManejadorListaItemsTopFavoritos {
 
-    public  ManejadorListaItemsTopFavoritos(){}
+    private final RepositorioConsultaItem repositorioConsultaItem;
+    private final FabricaItem fabricaItem;
 
-    public List<ItemComando> ejecutar(){
-        return null;
+    public List<ItemComando> ejecutar() {
+        return fabricaItem.crearLIsta(
+                repositorioConsultaItem.listarTopFavoritos()
+        );
     }
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface RepositorioConsultaItem {
 
-    List<Item> listar();
+    List<Item> listarTopFavoritos();
 
     Item buscarPorId(String id);
 

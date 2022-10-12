@@ -1,4 +1,4 @@
-package com.meli.comando.fabrica;
+package com.meli.fabrica;
 
 import com.meli.comando.ListaItemsCompradosCuponComando;
 import com.meli.item.modelo.entidades.ListaItemsCompradosCupon;
