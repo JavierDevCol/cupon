@@ -6,7 +6,8 @@ import com.meli.item.entity.ItemEntity;
 import com.meli.item.modelo.entidades.Item;
 import com.meli.item.puerto.repositorio.RepositorioComandoItem;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Repository;
+
+import java.util.Objects;
 
 @RequiredArgsConstructor
 public class AdaptadorRepositorioComandoItem implements RepositorioComandoItem {
@@ -22,7 +23,13 @@ public class AdaptadorRepositorioComandoItem implements RepositorioComandoItem {
     }
 
     @Override
-    public Item actualizar(Item item) {
-        return null;
+    public void actualizar(Item item) {
+        ItemEntity entity = itemDao.findById(item.getId()).orElse(null);
+        if (Objects.nonNull(entity)) {
+            entity.setQuantity_sold(
+                    entity.getQuantity_sold() + 1
+            );
+            itemDao.save(entity);
+        }
     }
 }

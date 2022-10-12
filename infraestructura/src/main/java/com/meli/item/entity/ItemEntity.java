@@ -2,6 +2,7 @@ package com.meli.item.entity;
 
 import lombok.*;
 import org.hibernate.Hibernate;
+import org.springframework.validation.ObjectError;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -32,5 +33,10 @@ public class ItemEntity {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    public void aumentarQuantitySold(){
+        if (Objects.isNull(this.quantity_sold))
+            this.quantity_sold = 0l;
     }
 }

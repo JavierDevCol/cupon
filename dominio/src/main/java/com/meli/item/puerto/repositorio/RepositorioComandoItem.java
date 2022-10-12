@@ -6,6 +6,6 @@ public interface RepositorioComandoItem {
 
     Item crear(Item item);
 
-    Item actualizar(Item item);
+    void actualizar(Item item);
 
 }

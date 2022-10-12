@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ItemApiMeli {
 
-    Item buscarItem(String id);
+    Item buscarItemMeli(String id);
 
-    List<Item> buscarItems(List<String> id);
+    List<Item> buscarItemsMeli(List<String> id);
 }

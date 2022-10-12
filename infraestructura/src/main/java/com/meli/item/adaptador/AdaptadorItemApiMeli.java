@@ -29,26 +29,28 @@ public class AdaptadorItemApiMeli implements ItemApiMeli {
     private final MapperItem mapperItem;
 
     @Override
-    public Item buscarItem(String id) {
+    public Item buscarItemMeli(String id) {
         id = this.validarFormatoSitie(id);
-        ResponseEntity<ItemEntity> entity;
+        ResponseEntity<ItemEntity> responseEntity;
         try {
-            entity = restTemplate.getForEntity(
+            responseEntity = restTemplate.getForEntity(
                     URL + BUSCAR_ITEM + id,
                     ItemEntity.class
             );
         } catch (Exception e) {
             throw new ExcepcionObjectoNoEncontrado(ITEM_NO_ENCONTRADO.concat(id));
         }
-        return mapperItem.intemEntityToItem(entity.getBody());
+        ItemEntity itemEntity = responseEntity.getBody();
+        itemEntity.aumentarQuantitySold();
+        return mapperItem.intemEntityToItem(itemEntity);
     }
 
     @Override
-    public List<Item> buscarItems(List<String> ids) {
+    public List<Item> buscarItemsMeli(List<String> ids) {
         List<Item> items = new ArrayList<>();
         ids.forEach(id ->
                 items.add(
-                        this.buscarItem(id)
+                        this.buscarItemMeli(id)
                 )
         );
         return items;

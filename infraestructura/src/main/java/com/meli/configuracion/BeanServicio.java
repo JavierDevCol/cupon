@@ -13,7 +13,6 @@ import com.meli.item.puerto.repositorio.RepositorioComandoItem;
 import com.meli.item.puerto.repositorio.RepositorioConsultaItem;
 import com.meli.item.servicio.ServicioCanjearCupon;
 import com.meli.item.servicio.ServicioCrearItemFavoriteado;
-import org.mapstruct.Mapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -40,8 +39,8 @@ public class BeanServicio {
 //    }
 
     @Bean
-    public ServicioCanjearCupon servicioCanjearCupon(){
-        return new ServicioCanjearCupon();
+    public ServicioCanjearCupon servicioCanjearCupon(RepositorioComandoItem repositorioComandoItem){
+        return new ServicioCanjearCupon(repositorioComandoItem);
     }
 
     @Bean
