@@ -10,8 +10,4 @@ public interface RepositorioConsultaItem {
 
     Item buscarPorId(String id);
 
-    Item buscarTitle(String title);
-
-    boolean existePorTitle(String title);
-
 }

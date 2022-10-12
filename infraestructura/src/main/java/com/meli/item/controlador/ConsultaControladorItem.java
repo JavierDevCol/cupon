@@ -17,6 +17,4 @@ public class ConsultaControladorItem {
     public ListaItemsTopFavoritosDto listarTop(){
        return new ListaItemsTopFavoritosDto(manejadorListaItemsTopFavoritos.ejecutar());
    }
-
-
 }

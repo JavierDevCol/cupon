@@ -19,7 +19,7 @@ public class AdaptadorRepositorioComandoItem implements RepositorioComandoItem {
     public Item crear(Item item) {
         ItemEntity itemEntity = mapperItem.itemToItemEntity(item);
         itemDao.save(itemEntity);
-        return null;
+        return mapperItem.intemEntityToItem(itemEntity);
     }
 
     @Override

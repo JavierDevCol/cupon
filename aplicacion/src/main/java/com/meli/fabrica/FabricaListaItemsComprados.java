@@ -2,9 +2,9 @@ package com.meli.fabrica;
 
 import com.meli.comando.ListaItemsCompradosCuponComando;
 import com.meli.item.modelo.entidades.ListaItemsCompradosCupon;
-import org.springframework.stereotype.Component;
+import lombok.RequiredArgsConstructor;
 
-@Component
+@RequiredArgsConstructor
 public class FabricaListaItemsComprados {
 
     public ListaItemsCompradosCuponComando crear(ListaItemsCompradosCupon listaItemsCompradosCupon){

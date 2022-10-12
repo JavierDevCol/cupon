@@ -34,18 +34,8 @@ public class AdaptadorRepositorioConsultaItem implements RepositorioConsultaItem
         return mapperItem.intemEntityToItem(entity);
     }
 
-    @Override
-    public Item buscarTitle(String title) {
-        return null;
-    }
-
-    @Override
-    public boolean existePorTitle(String title) {
-        return false;
-    }
-
     private void topCinco(List<ItemEntity> itemEntities) {
-        for (int i = itemEntities.size(); i > CANTIDAD_TOP ; i--) {
+        for (int i = itemEntities.size(); i > CANTIDAD_TOP; i--) {
             itemEntities.remove(i - 1);
         }
     }

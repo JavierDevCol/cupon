@@ -2,12 +2,12 @@ package com.meli.fabrica;
 
 import com.meli.comando.ItemComando;
 import com.meli.item.modelo.entidades.Item;
-import org.springframework.stereotype.Component;
+import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@RequiredArgsConstructor
 public class FabricaItem {
 
     public Item crear(ItemComando itemComando) {

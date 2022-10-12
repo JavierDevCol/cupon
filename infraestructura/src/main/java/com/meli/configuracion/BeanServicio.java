@@ -53,13 +53,17 @@ public class BeanServicio {
     }
 
     @Bean
-    public Clock clock() {
-        return Clock.systemDefaultZone();
+    public AdaptadorRepositorioComandoItem repositorioComandoItem(ItemDao itemDao, MapperItem mapperItem) {
+        return new AdaptadorRepositorioComandoItem(itemDao, mapperItem);
     }
 
     @Bean
-    public AdaptadorRepositorioComandoItem repositorioComandoItem(ItemDao itemDao, MapperItem mapperItem) {
-        return new AdaptadorRepositorioComandoItem(itemDao, mapperItem);
+    public FabricaItem fabricaItem(){
+        return new FabricaItem();
+    }
 
+    @Bean
+    public FabricaListaItemsComprados fabricaListaItemsComprados(){
+        return new FabricaListaItemsComprados();
     }
 }
