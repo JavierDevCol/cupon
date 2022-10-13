@@ -50,6 +50,10 @@
 
       
   
+  - entra a "consulta-controlador-item", dale click a execute. Te respondera con una lista de los 5 items mas vendidos segun las listas de items favoritos. 
+    (La lista esta organizada del mas vendido al menos vendido)
+    
+    <img width="542" alt="image" src="https://user-images.githubusercontent.com/89594527/195504259-dbf258f3-4d95-446e-a48d-eaac9a164a93.png">
 
 
   
