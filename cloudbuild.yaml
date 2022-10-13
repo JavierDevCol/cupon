@@ -1,10 +1,10 @@
 # [START cloudbuild_basic_config]
 steps:
-  - name: gradle:7.5-jdk8
+  - name: gradle:7.5-jdk11
     entrypoint: gradle
     args: [ '--version' ]
 
-  - name: gradle:7.5-jdk8
+  - name: gradle:7.5-jdk11
     entrypoint: gradle
     args: [ 'assemble' ]
   # Docker Build
