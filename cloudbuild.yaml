@@ -1,0 +1,9 @@
+# [START cloudbuild_gradle]
+steps:
+  - name: gradle:7.5.0-jdk8
+    entrypoint: gradle
+    args: ["assemble"]
+  - name: gcr.io/cloud-builders/docker
+    args: ["build", "-t", "us-central1-docker.pkg.dev/animated-bonsai-331019/cupon", "--build-arg=JAR_FILE=build/libs/cupon-0.0.1-SNAPSHOT.jar", "."]
+images: ["us-central1-docker.pkg.dev/animated-bonsai-331019/cupon"]
+# [END cloudbuild_gradle]
