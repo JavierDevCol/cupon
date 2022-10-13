@@ -11,7 +11,9 @@
     posible.
     - El precio puede contener hasta 2 decimales. 
     
-    <img width="524" alt="image" src="https://user-images.githubusercontent.com/89594527/195502576-4b61f0b2-8513-4b48-a855-e9c9c3cc5fad.png">
+
+
+<img width="524" alt="image" src="https://user-images.githubusercontent.com/89594527/195502576-4b61f0b2-8513-4b48-a855-e9c9c3cc5fad.png">
 
 
 #instalacion
@@ -43,6 +45,9 @@
   
   - te respondera con la lista de items que puedes comprar sin exceder el limite del cupon, tambien el precio total de los items comprados y el valor del cupon.
       (La lista esta ordenada del menor precio al mayor).
+      
+      <img width="526" alt="image" src="https://user-images.githubusercontent.com/89594527/195502928-abcb6fb5-676d-4ec5-95b2-21e3f4260131.png">
+
       
   
 
