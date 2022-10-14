@@ -1,6 +1,8 @@
 # [START cloudbuild_basic_config]
 steps:
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args: [ 'cd', 'src/resources' ]
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     args: [ 'ls' ]
 
   - name: gradle:7.5-jdk11
