@@ -1,25 +1,21 @@
 # [START cloudbuild_basic_config]
 steps:
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    args: [ 'ls' ]
-
   - name: gradle:7.5-jdk11
     entrypoint: gradle
     args: [ 'assemble' ]
-  # Docker Build
 
+  # Docker Build
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'build', '-t',
             'gcr.io/animated-bonsai-331019/myimage',
             '.' ]
-  # Docker Push
 
+  # Docker Push
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'push',
             'gcr.io/animated-bonsai-331019/myimage' ]
 
   #Login GCLOUD
-
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args: [ 'auth', 'activate-service-account', '304952370723-compute@developer.gserviceaccount.com',
@@ -29,9 +25,8 @@ steps:
   # Entrypoint, timeout and environment variables
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
-    args: [ 'compute', 'instances', 'add-access-config',
+    args: [ 'compute', 'instances',
             'create-with-container', 'my-vm-name',
-            '--container-privileged',
             '--container-image',
             'gcr.io/animated-bonsai-331019/myimage'
     ]
