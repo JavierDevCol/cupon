@@ -24,4 +24,9 @@ public class ComandoControladorItem {
     public ListaItemsCompradosCuponComando redimirCupon(@RequestBody List<String> listaItemsFavoritos, Double cupon) {
         return manejadorCanjearCupon.ejecutar( listaItemsFavoritos, cupon);
     }
+
+    @GetMapping("/hola")
+    public String hola(){
+        return "HOLA MUNDO";
+    }
 }
