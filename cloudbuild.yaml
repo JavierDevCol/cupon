@@ -1,12 +1,5 @@
 # [START cloudbuild_basic_config]
 steps:
-
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'gcloud'
-    args: [ 'iam', 'service-accounts',  'keys',
-            'create ~/sa-private-key.json',
-            '--iam-account=304952370723-compute@developer.gserviceaccount.com'
-    ]
   - name: gradle:7.5-jdk11
     entrypoint: gradle
     args: [ 'assemble' ]
@@ -21,17 +14,6 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'push',
             'gcr.io/animated-bonsai-331019/myimage' ]
-
-  #Login GCLOUD
-
-
-
-
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'gcloud'
-    args: [ 'auth', 'activate-service-account', '304952370723-compute@developer.gserviceaccount.com',
-            '--key-file=/home/javiergarciadevcol/sa-private-key.json' ]
-
 
   # Entrypoint, timeout and environment variables
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
