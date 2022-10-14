@@ -20,11 +20,16 @@ steps:
 
 #Login GCLOUD
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'gcloud'
+    entrypoint: 'sudo gcloud'
     args: [  'iam', 'service-accounts',  'keys',
-             'create /sa-private-key.json \',
+             'create sa-private-key.json \',
              '--iam-account=304952370723-compute@developer.gserviceaccount.com'
     ]
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args: [  'ls'
+    ]
+
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
