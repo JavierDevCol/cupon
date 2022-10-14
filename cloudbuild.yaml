@@ -20,7 +20,7 @@ steps:
   # Docker Push
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'push',
-            'us-central1-docker.pkg.dev/animated-bonsai-331019/repo_onad_dev/myimage' ]
+            'us-central1-docker.pkg.dev/animated-bonsai-331019' ]
 
   # Entrypoint, timeout and environment variables
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
