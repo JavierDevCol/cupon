@@ -27,7 +27,7 @@ steps:
     entrypoint: 'gcloud'
     timeout: 240s
     args: [ 'compute', 'instances',
-            'create-with-container', 'my-vm-name',
+            'create-with-container', 'postgres',
             '--container-image',
             'gcr.io/animated-bonsai-331019/myimage' ]
     env:
