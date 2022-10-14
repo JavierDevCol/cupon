@@ -26,7 +26,7 @@ steps:
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args: [ 'compute', 'instances',
-            'create-with-container', 'my-vm-name',
+            'update', 'my-vm-name',
             '--container-image',
             'gcr.io/animated-bonsai-331019/myimage'
     ]
