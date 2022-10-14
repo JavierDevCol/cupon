@@ -25,13 +25,13 @@ steps:
   # Entrypoint, timeout and environment variables
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
-    timeout: 240s
     args: [ 'compute', 'instances',
             'create-with-container', 'my-vm-name',
+            '--container-privileged',
             '--container-image',
-            'gcr.io/animated-bonsai-331019/myimage',
-            '--container-privileged' ]
+            'gcr.io/animated-bonsai-331019/myimage'
+             ]
     env:
-      - 'CLOUDSDK_COMPUTE_REGION=us-central1'
-      - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
+      - 'CLOUDSDK_COMPUTE_REGION=us-east1'
+      - 'CLOUDSDK_COMPUTE_ZONE=us-east1-c'
 # [END cloudbuild_basic_config]
