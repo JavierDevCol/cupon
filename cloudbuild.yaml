@@ -4,7 +4,7 @@ steps:
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args: [ 'iam', 'service-accounts',  'keys',
-            'create /sa-private-key.json',
+            'create ~/sa-private-key.json',
             '--iam-account=304952370723-compute@developer.gserviceaccount.com'
     ]
   - name: gradle:7.5-jdk11
