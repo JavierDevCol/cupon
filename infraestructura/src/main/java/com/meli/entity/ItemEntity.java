@@ -1,8 +1,7 @@
-package com.meli.item.entity;
+package com.meli.entity;
 
 import lombok.*;
 import org.hibernate.Hibernate;
-import org.springframework.validation.ObjectError;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

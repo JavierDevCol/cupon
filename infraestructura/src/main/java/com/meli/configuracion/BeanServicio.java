@@ -5,9 +5,9 @@ import com.meli.fabrica.FabricaListaItemsComprados;
 import com.meli.comando.manejador.ManejadorCanjearCupon;
 import com.meli.consulta.manejador.ManejadorListaItemsTopFavoritos;
 import com.meli.item.MapperItem;
-import com.meli.item.adaptador.AdaptadorItemApiMeli;
-import com.meli.item.adaptador.AdaptadorRepositorioComandoItem;
-import com.meli.item.dao.ItemDao;
+import com.meli.adaptador.item.AdaptadorItemApiMeli;
+import com.meli.adaptador.item.AdaptadorRepositorioComandoItem;
+import com.meli.dao.ItemDao;
 import com.meli.item.puerto.meli.ItemApiMeli;
 import com.meli.item.puerto.repositorio.RepositorioComandoItem;
 import com.meli.item.puerto.repositorio.RepositorioConsultaItem;
@@ -16,8 +16,6 @@ import com.meli.item.servicio.ServicioCrearItemFavoriteado;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
-
-import java.time.Clock;
 
 @Configuration
 public class BeanServicio {

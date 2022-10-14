@@ -1,4 +1,4 @@
-package com.meli.item.dto;
+package com.meli.dto;
 
 import com.meli.comando.ItemComando;
 import lombok.AllArgsConstructor;

@@ -1,9 +1,9 @@
-package com.meli.item.adaptador;
+package com.meli.adaptador.item;
 
 import com.excepcion.ExcepcionObjectoNoEncontrado;
 import com.excepcion.ExcepcionTecnica;
 import com.meli.item.MapperItem;
-import com.meli.item.entity.ItemEntity;
+import com.meli.entity.ItemEntity;
 import com.meli.item.modelo.entidades.Item;
 import com.meli.item.puerto.meli.ItemApiMeli;
 import lombok.RequiredArgsConstructor;

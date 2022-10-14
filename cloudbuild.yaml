@@ -15,7 +15,7 @@ steps:
 
   # Docker Login
   - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'login' ]
+    args: [ 'images' ]
 
   # Docker Push
   - name: 'gcr.io/cloud-builders/docker'

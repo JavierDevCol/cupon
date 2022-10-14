@@ -1,12 +1,7 @@
-package com.meli.item.controlador;
+package com.meli.controlador.item;
 
-import com.excepcion.ExcepcionSinDatos;
-import com.meli.comando.ItemComando;
 import com.meli.comando.ListaItemsCompradosCuponComando;
 import com.meli.comando.manejador.ManejadorCanjearCupon;
-import com.meli.item.adaptador.AdaptadorItemApiMeli;
-import com.meli.item.modelo.entidades.ListaItemsCompradosCupon;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
