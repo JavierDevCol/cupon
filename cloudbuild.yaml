@@ -1,7 +1,8 @@
 # [START cloudbuild_basic_config]
 steps:
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    args: [  'sudo', '-i'
+    entrypoint: sudo
+    args: [  '-i'
     ]
   - name: gradle:7.5-jdk11
     entrypoint: gradle
@@ -21,13 +22,13 @@ steps:
     args: [ 'push',
             'gcr.io/animated-bonsai-331019/myimage' ]
 
-#Login GCLOUD
+  #Login GCLOUD
 
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'sudo'
-    args: [  'gcloud',  'iam', 'service-accounts',  'keys',
-             'create sa-private-key.json \',
-             '--iam-account=304952370723-compute@developer.gserviceaccount.com'
+    entrypoint: 'gcloud'
+    args: [ 'iam', 'service-accounts',  'keys',
+            'create sa-private-key.json \',
+            '--iam-account=304952370723-compute@developer.gserviceaccount.com'
     ]
 
 
@@ -36,7 +37,7 @@ steps:
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args: [ 'auth', 'activate-service-account', '304952370723-compute@developer.gserviceaccount.com',
-              '--key-file=/home/javiergarciadevcol/sa-private-key.json']
+            '--key-file=/home/javiergarciadevcol/sa-private-key.json' ]
 
 
   # Entrypoint, timeout and environment variables
@@ -47,7 +48,7 @@ steps:
             '--container-privileged',
             '--container-image',
             'gcr.io/animated-bonsai-331019/myimage'
-             ]
+    ]
     env:
       - 'CLOUDSDK_COMPUTE_REGION=us-east1'
       - 'CLOUDSDK_COMPUTE_ZONE=us-east1-c'
