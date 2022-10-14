@@ -23,7 +23,7 @@ steps:
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args: [ 'auth', 'activate-service-account', '304952370723-compute@developer.gserviceaccount.com',
-            '--key-file=/home/javiergarciadevcol/sa-private-key.json' ]
+            '--key-file=me.json' ]
 
 
   # Entrypoint, timeout and environment variables
