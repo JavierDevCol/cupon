@@ -18,7 +18,7 @@ steps:
   # Entrypoint, timeout and environment variables
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
-    args: [ 'compute', 'instances',
+    args: [ 'compute', 'instances', 'add-access-config'
             'create-with-container', 'my-vm-name',
             '--container-privileged',
             '--container-image',
