@@ -13,10 +13,6 @@ steps:
             'gcr.io/animated-bonsai-331019/myimage',
             '.' ]
 
-  # Docker Login
-  - name: 'gcr.io/cloud-builders/docker'
-    args: [ 'images' ]
-
   # Docker Push
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'push',
@@ -26,7 +22,7 @@ steps:
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args: [  'iam', 'service-accounts',  'keys',
-             'create ~/sa-private-key.json \',
+             'create /sa-private-key.json \',
              '--iam-account=304952370723-compute@developer.gserviceaccount.com'
     ]
 
