@@ -1,10 +1,10 @@
 package com.meli.configuracion;
 
+import com.meli.MapperItem;
 import com.meli.fabrica.FabricaItem;
 import com.meli.fabrica.FabricaListaItemsComprados;
 import com.meli.comando.manejador.ManejadorCanjearCupon;
 import com.meli.consulta.manejador.ManejadorListaItemsTopFavoritos;
-import com.meli.item.MapperItem;
 import com.meli.adaptador.item.AdaptadorItemApiMeli;
 import com.meli.adaptador.item.AdaptadorRepositorioComandoItem;
 import com.meli.dao.ItemDao;

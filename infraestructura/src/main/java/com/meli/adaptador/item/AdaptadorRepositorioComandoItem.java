@@ -1,6 +1,6 @@
 package com.meli.adaptador.item;
 
-import com.meli.item.MapperItem;
+import com.meli.MapperItem;
 import com.meli.dao.ItemDao;
 import com.meli.entity.ItemEntity;
 import com.meli.item.modelo.entidades.Item;

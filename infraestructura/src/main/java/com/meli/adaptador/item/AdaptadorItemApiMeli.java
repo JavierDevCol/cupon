@@ -2,7 +2,7 @@ package com.meli.adaptador.item;
 
 import com.excepcion.ExcepcionObjectoNoEncontrado;
 import com.excepcion.ExcepcionTecnica;
-import com.meli.item.MapperItem;
+import com.meli.MapperItem;
 import com.meli.entity.ItemEntity;
 import com.meli.item.modelo.entidades.Item;
 import com.meli.item.puerto.meli.ItemApiMeli;
