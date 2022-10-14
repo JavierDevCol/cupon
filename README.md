@@ -28,7 +28,7 @@
 #como se usa
 
   -Puedes usar el link "http://localhost:8080/swagger-ui/index.html" (usar la aplicacion local) o puedes ingresar al siguiente 
-     link "http://34.125.76.111:8080/swagger-ui/index.html"
+     link "http://35.196.21.215:8080/swagger-ui/index.html"
 
   - ingresa a la siguiente url "https://api.mercadolibre.com/sites/MCO/categories", selecciona el id que desees.
   <img width="312" alt="image" src="https://user-images.githubusercontent.com/89594527/195500272-623554e3-876c-459d-9912-bd197d08d98c.png">
